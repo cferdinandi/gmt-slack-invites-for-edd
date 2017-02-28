@@ -8,12 +8,12 @@
 	function gmt_edd_invite_to_slack_on_complete_purchase( $payment_id ) {
 
 		// Variables
-		$payment = edd_get_payment_meta( $payment_id );
-		$user = get_user_by( 'email', sanitize_email( $payment['email'] ) );
+		$downloads = edd_get_payment_meta_downloads( $payment_id );
+		$email = edd_get_payment_user_email( $payment_id );
 
 		// See if user account should be created
 		$invite = 'off';
-		foreach( $payment['downloads'] as $download ) {
+		foreach( $downloads as $download ) {
 			if ( get_post_meta( $download['id'], 'gmt_edd_invite_to_slack', true ) === 'on' ) {
 				$invite = 'on';
 				break;
@@ -29,10 +29,10 @@
 		$slack = new Slack_Invite( $auth_token, $team_domain );
 
 		// Invite purchaser to Slack
-		$invitation = $slack->send_invite( sanitize_email( $payment['email'] ) );
+		$invitation = $slack->send_invite( $email );
 
 		// Emit action hook
-		do_action( 'gmt_edd_invite_to_slack_after', sanitize_email( $payment['email'] ) );
+		do_action( 'gmt_edd_invite_to_slack_after', $email );
 
 	}
 	add_action( 'edd_complete_purchase', 'gmt_edd_invite_to_slack_on_complete_purchase' );
