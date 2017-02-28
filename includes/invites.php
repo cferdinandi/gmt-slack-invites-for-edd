@@ -12,12 +12,16 @@
 		$user = get_user_by( 'email', sanitize_email( $payment['email'] ) );
 
 		// See if user account should be created
-		$invite = 'off';
+		$send_invite = false;
 		foreach( $payment['downloads'] as $download ) {
 			if ( get_post_meta( $download['id'], 'gmt_edd_invite_to_slack', true ) === 'on' ) {
-				$invite = 'on';
+				$send_invite = 'on';
 				break;
 			}
+		}
+		
+		if( empty( $send_invite ) ) {
+			return; // Invites not enabled
 		}
 
 		// Get Slack Credentials
