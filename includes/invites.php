@@ -20,6 +20,9 @@
 			}
 		}
 
+		// If invites are off, bail
+		if ( $invite !== 'on' ) return;
+
 		// Get Slack Credentials
 		$team_domain = edd_get_option( 'gmt_slack_team_domain', false );
 		$auth_token = edd_get_option( 'gmt_slack_auth_token', false );

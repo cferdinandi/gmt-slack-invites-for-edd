@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/cferdinandi/gmt-slack-invites-for-edd/
  * GitHub Plugin URI: https://github.com/cferdinandi/gmt-slack-invites-for-edd/
  * Description: Automatically invite members to your Slack team if they purchase a product.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Chris Ferdinandi
  * Author URI: http://gomakethings.com
  * License: GPLv3
