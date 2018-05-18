@@ -1,4 +1,7 @@
-# GMT Slack Invites for EDD
+# [DEPRECATED] GMT Slack Invites for EDD
+
+*__Deprecation Notice:__ This plugin has been deprecated and is no longer maintained or updated.*
+
 Automatically invite someone to your Slack team if they purchase a product.
 
 [Download Automated Slack Invites](https://github.com/cferdinandi/gmt-slack-invites-for-edd/archive/master.zip)
